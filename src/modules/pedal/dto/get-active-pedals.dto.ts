@@ -3,6 +3,7 @@ import { UserToPedalType } from '../protocols/user-to-pedal.type';
 
 export class GetActivePedalsDto {
   constructor(pedalEntity: Pedal) {
+    delete pedalEntity.owner.password;
     this.id = pedalEntity.id;
     this.name = pedalEntity.name;
     this.startDate = pedalEntity.startDate;
@@ -12,15 +13,10 @@ export class GetActivePedalsDto {
     this.additionalInformation = pedalEntity.additionalInformation;
     this.participantsLimit = pedalEntity.participantsLimit;
     this.owner = pedalEntity.owner;
-    this.userToPedal = pedalEntity.userToPedal.map((userToPedal) => ({
-      id: userToPedal.id,
-      subscription_pedal: userToPedal.subscription_pedal,
-      user: {
-        id: userToPedal.user.id,
-        name: userToPedal.user.name,
-        email: userToPedal.user.email,
-      },
-    }));
+    this.userToPedal = pedalEntity.userToPedal.map((userToPedal) => {
+      delete userToPedal.user.password;
+      return userToPedal;
+    });
   }
 
   id: number;

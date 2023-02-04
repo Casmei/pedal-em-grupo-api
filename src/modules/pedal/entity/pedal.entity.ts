@@ -2,8 +2,6 @@ import { User } from 'src/modules/user/entity/user.entity';
 import {
   Column,
   Entity,
-  JoinTable,
-  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
@@ -36,7 +34,7 @@ export class Pedal {
   @Column({ nullable: true })
   participantsLimit?: number;
 
-  @ManyToOne(() => User, (user) => user.pedals)
+  @ManyToOne(() => User, (user) => user.pedals, { eager: true })
   owner: User;
 
   @OneToMany(() => UserToPedal, (userToPedal) => userToPedal.pedal)

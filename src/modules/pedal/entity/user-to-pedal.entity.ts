@@ -7,7 +7,7 @@ export class UserToPedal {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @ManyToOne(() => User, (user) => user.userToPedal, {
+  @ManyToOne(() => Pedal, (pedal) => pedal.userToPedal, {
     cascade: true,
     onDelete: 'CASCADE',
   })
@@ -16,6 +16,7 @@ export class UserToPedal {
   @ManyToOne(() => User, (user) => user.userToPedal, {
     cascade: true,
     onDelete: 'CASCADE',
+    eager: true,
   })
   user: User;
 

@@ -16,7 +16,6 @@ export class PedalService {
   ) {}
 
   async create(data: CreatePedalDto, userId: number) {
-    //TODO: usar algum pipe ou lib para transformar isso no tipo data
     const startDateRegistration = new Date(data.startDateRegistration);
     const endDateRegistration = new Date(data.endDateRegistration);
     const startDate = new Date(data.startDate);
@@ -27,7 +26,7 @@ export class PedalService {
       startDate,
     );
 
-    return this.pedalRepository.save({
+    const pedal = await this.pedalRepository.save({
       ...data,
       users: [{ id: userId }],
       owner: { id: userId },
@@ -35,12 +34,20 @@ export class PedalService {
       endDateRegistration,
       startDate,
     });
+
+    this.userToPedalRepository.save({
+      pedal,
+      user: { id: userId },
+      subscription_pedal: new Date(),
+    });
+
+    return pedal;
   }
 
   async activePedals() {
     const date = new Date();
 
-    return this.pedalRepository.find({
+    const a = await this.pedalRepository.find({
       where: {
         endDateRegistration: MoreThan(date),
         startDateRegistration: LessThan(date),
@@ -49,6 +56,8 @@ export class PedalService {
         userToPedal: { user: true },
       },
     });
+
+    return a;
   }
 
   async registerOnPedal(pedalId: number, userId: number) {
@@ -92,23 +101,29 @@ export class PedalService {
   }
 
   private async validateUserRegistration(pedalId: number, userId: number) {
-    const pedal = await this.pedalRepository.findOneBy({ id: pedalId });
+    const pedal = await this.pedalRepository.findOne({
+      where: { id: pedalId },
+      relations: {
+        userToPedal: true,
+      },
+    });
 
-    if (compareDates(pedal.startDateRegistration, new Date())) {
+    if (compareDates(new Date(), pedal.startDateRegistration)) {
       throw new BadRequestException('Registration date not started');
     }
 
-    if (compareDates(new Date(), pedal.endDateRegistration)) {
+    if (compareDates(pedal.endDateRegistration, new Date())) {
       throw new BadRequestException('Expired registration time');
     }
 
-    if (pedal.owner.id === userId) {
+    if ((await pedal.owner.id) === userId) {
       throw new BadRequestException(
         'The owner cannot register on the pedal he created',
       );
     }
+    console.log('🚀 ~ pedal', await pedal.userToPedal);
 
-    if (pedal.participantsLimit < pedal.userToPedal.length) {
+    if (pedal.participantsLimit < (await pedal.userToPedal.length)) {
       throw new BadRequestException('Limit number of participants reached');
     }
   }
