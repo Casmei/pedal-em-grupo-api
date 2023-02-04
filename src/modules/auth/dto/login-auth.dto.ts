@@ -1,4 +1,12 @@
-import { PickType } from '@nestjs/mapped-types';
-import { User } from 'src/modules/user/entity/user.entity';
-
-export class LoginAuthDto extends PickType(User, ['email', 'password']) {}
+export class LoginAuthDto {
+  /**
+   * Email do usuário previamente cadastrado
+   * @example 'casmei@protonmail.com'
+   */
+  email: string;
+  /**
+   * Senha do usuário previamente cadastrado
+   * @example '12345678910'
+   */
+  password: string;
+}

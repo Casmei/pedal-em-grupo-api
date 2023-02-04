@@ -19,14 +19,54 @@ export class GetActivePedalsDto {
     });
   }
 
+  /**
+   * ID do Pedal
+   * @example 1
+   */
   id: number;
+  /**
+   * Nome do Pedal
+   * @example 'Pedal Turistico - Almenara'
+   */
   name: string;
+  /**
+   * Inicio da data de cadastro
+   * @example '2023-02-10'
+   */
   startDate: Date;
+  /**
+   * Inicio da data de cadastro
+   * @example '2023-02-10'
+   */
   startDateRegistration: Date;
+  /**
+   * Final da data de cadastro
+   * @example '2023-02-20'
+   */
   endDateRegistration: Date;
+  /**
+   * Informações adicionais ao pedal
+   * @example 'Levem uma garrafa d'água'
+   */
   additionalInformation?: string;
+  /**
+   * Número máximo de participantes
+   * @example 10
+   */
   startPlace: string;
+  /**
+   * ID do dono do Pedal
+   * @example 1
+   */
   owner: { id: number };
+  /**
+   * Número máximo de participantes
+   * @example 10
+   */
   participantsLimit?: number;
+  /**
+   * Listagem de usúarios participantes do evento
+   * @example {id: 1, subscription_date: '2023-02-17', user: {id: 1, name: 'Tiago', email: 'casmei@protonmail.com'} }
+   */
   userToPedal: UserToPedalType[];
 }

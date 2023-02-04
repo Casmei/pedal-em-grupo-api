@@ -121,7 +121,6 @@ export class PedalService {
         'The owner cannot register on the pedal he created',
       );
     }
-    console.log('🚀 ~ pedal', await pedal.userToPedal);
 
     if (pedal.participantsLimit < (await pedal.userToPedal.length)) {
       throw new BadRequestException('Limit number of participants reached');
