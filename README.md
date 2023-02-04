@@ -1,5 +1,5 @@
 
-![Logo](/bike-github.png)
+![Logo](github-images/banner-bike.png)
 
 O projeto consiste em um simples sistema para organizar pedaladas em grupo. Quem sabe isso não desperte seu interesse em fazer alguns pedais com seus amigos?!
 
