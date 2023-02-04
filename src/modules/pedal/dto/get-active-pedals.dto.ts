@@ -11,6 +11,7 @@ export class GetActivePedalsDto {
     this.startPlace = pedalEntity.startPlace;
     this.additionalInformation = pedalEntity.additionalInformation;
     this.participantsLimit = pedalEntity.participantsLimit;
+    this.owner = pedalEntity.owner;
     this.userToPedal = pedalEntity.userToPedal.map((userToPedal) => ({
       id: userToPedal.id,
       subscription_pedal: userToPedal.subscription_pedal,
@@ -29,6 +30,7 @@ export class GetActivePedalsDto {
   endDateRegistration: Date;
   additionalInformation?: string;
   startPlace: string;
+  owner: { id: number };
   participantsLimit?: number;
   userToPedal: UserToPedalType[];
 }
