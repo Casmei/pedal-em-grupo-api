@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+
+  rideriza:
+    build:
+      context: .
+      target: dependencies
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3034:3000
+    command: npm run start:prod

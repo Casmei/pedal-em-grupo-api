@@ -15,12 +15,6 @@ import { JwtVerifyGuard } from './modules/auth/guards/jwt-verify.guard';
   ],
   imports: [
     TypeOrmModule.forRoot({
-      // type: 'postgres',
-      // host: 'localhost',
-      // port: 5432,
-      // username: 'postgres',
-      // password: 'postgres',
-      // database: 'bike',
       type: 'sqlite',
       database: 'bike',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
