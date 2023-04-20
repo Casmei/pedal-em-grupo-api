@@ -3,9 +3,16 @@
 
 <!-- ME CONTRATA! -->
 
-O projeto consiste em um simples sistema para organizar pedaladas em grupo. Quem sabe isso não desperte seu interesse em fazer alguns pedais com seus amigos?!
+> 🔹 Projeto desenvolvido para práticar meus conhecimentos em Nest.js e Autenticação JWT
 
-<h1 align="center"> Instalação </h1>
+
+Imagine que você precise organizar um pedal, este de alguma forma será para um grande grupo de pessoas. A gestão desse evento em um bloco de papel ou planilha é limitador, com possibilidades de inconsistência nos dados e muitas vezes não atendedendo todos os seus requisitos do cenário.
+
+A prosta dessa api é ser simples e eficaz, permitindo que usuários possam criar pedais, gerenciar datas de início e de fim dos cadastros, bem como a quantidade de participantes. O gestor de um pedal também será capaz de gerar convites para possíveis participantes.
+
+Quem sabe esse projeto não desperte seu interesse em fazer alguns pedais com seus amigos?!
+
+## Instalação
 
 ### Pré-requisitos
 
@@ -23,7 +30,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
   Atenção: Verifique se as postas 3000 e 5432 estão disponíveis em sua máquina
 ```
 
-<h1 align="center"> Ferramentas utilizadas </h1>
+## Ferramentas utilizadas
 
 - Nest.js
 - TypeORM
@@ -32,6 +39,5 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 ---
 
-Feito com ❤️ e ☕ por Tiago de Castro 👋🏽 [Entre em contato!](https://www.linkedin.com/in/tiago-de-castro-lima-3814911b9/) <br>
-Este projeto esta sobe a licença [MIT](./LICENSE).
+Feito com ❤️ e ☕ por Tiago de Castro 👋🏽 [Entre em contato!](https://earnest-begonia-690754.netlify.app/)
 
